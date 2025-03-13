@@ -19,13 +19,6 @@ function getHumanChoice(escolha){
     return escolha;
 }
 
-
-function getHumanChoice(escolha){
-    escolha = prompt("Pedra, papel ou tesoura?");
-    return escolha;
-}
-
-
 function getComputerChoice(escolha){
     let num = Math.floor(Math.random() * 3 + 1);
     if(num === 1){

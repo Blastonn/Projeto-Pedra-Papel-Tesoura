@@ -1,6 +1,11 @@
 let pontuaRobo = 1;
 let pontuaHumano = 1;
 
+function getHumanChoice(escolha){
+    return escolha;
+}
+
+
 function getComputerChoice(escolha){
     let num = Math.floor(Math.random() * 3 + 1);
     if(num === 1){
@@ -15,14 +20,8 @@ function getComputerChoice(escolha){
     }
 }
 
-function getHumanChoice(escolha){
-    escolha = prompt("Pedra, papel ou tesoura?");
-    return escolha;
-}
 
-for (let i = 1; i <= 5; i++){
-function playGame(humanChoice, computerChoice){
-        function playRound(){ 
+function playRound(humanChoice, computerChoice){
             if (humanChoice.toLowerCase() === "pedra" && computerChoice === "Papel"){
                 pontuaRobo += 1;
                 return console.log("Voce perdeu papel vence pedra!  ");
@@ -45,23 +44,35 @@ function playGame(humanChoice, computerChoice){
                 console.log("empate");
             }
 
-        }
-        return playRound();
-}
+    }
+// function playGame(){
+//         for(i = 0; i < 5;i++){
+//                 let choiceHuman = getHumanChoice();
+//                 let choiceComputer = getComputerChoice();
+//                 console.log("Escolha do computador: " + choiceComputer);
+//                 playRound(choiceHuman,choiceComputer);
+//             }    
+//            return vencedorJogo();
+//         }
 
-    let choiceHuman = getHumanChoice();
-    let choiceComputer = getComputerChoice();
-    playGame(choiceHuman,choiceComputer);
-}
-vencedorJogo();
-
-function vencedorJogo(roboPont, humanPont){
-    roboPont = pontuaRobo;
-    humanPont = pontuaHumano;
-    if (humanPont > roboPont){
-        return console.log("Parabens! voce ganhou da maquina.");
+function vencedorJogo(){
+    if (pontuaHumano > pontuaRobo){
+        console.log("Parabens! voce ganhou da maquina.");
+    }else if(pontuaHumano < pontuaRobo){
+        console.log("Que triste! Voce perdeu para maquina");
     }else{
-        return console.log("Que triste! Voce perdeu para maquina");
+        console.log("Empate!");
     }
 }
 
+// playGame();
+const buttons = document.querySelectorAll("button");
+const para = document.querySelector("div");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    let choiceHuman = getHumanChoice(button.id);
+    let choiceComputer = getComputerChoice();
+    playRound(choiceHuman, choiceComputer);
+  });
+});

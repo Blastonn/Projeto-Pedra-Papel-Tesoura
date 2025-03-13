@@ -1,6 +1,12 @@
 let pontuaRobo = 1;
 let pontuaHumano = 1;
 
+function getHumanChoice(escolha){
+    escolha = prompt("Pedra, papel ou tesoura?");
+    return escolha;
+}
+
+
 function getComputerChoice(escolha){
     let num = Math.floor(Math.random() * 3 + 1);
     if(num === 1){
@@ -15,14 +21,8 @@ function getComputerChoice(escolha){
     }
 }
 
-function getHumanChoice(escolha){
-    escolha = prompt("Pedra, papel ou tesoura?");
-    return escolha;
-}
 
-for (let i = 1; i <= 5; i++){
-function playGame(humanChoice, computerChoice){
-        function playRound(){ 
+function playRound(humanChoice, computerChoice){
             if (humanChoice.toLowerCase() === "pedra" && computerChoice === "Papel"){
                 pontuaRobo += 1;
                 return console.log("Voce perdeu papel vence pedra!  ");
@@ -45,23 +45,25 @@ function playGame(humanChoice, computerChoice){
                 console.log("empate");
             }
 
+    }
+function playGame(){
+        for(i = 0; i < 5;i++){
+                let choiceHuman = getHumanChoice();
+                let choiceComputer = getComputerChoice();
+                console.log("Escolha do computador: " + choiceComputer);
+                playRound(choiceHuman,choiceComputer);
+            }    
+           return vencedorJogo();
         }
-        return playRound();
-}
-
-    let choiceHuman = getHumanChoice();
-    let choiceComputer = getComputerChoice();
-    playGame(choiceHuman,choiceComputer);
-}
-vencedorJogo();
 
 function vencedorJogo(roboPont, humanPont){
-    roboPont = pontuaRobo;
-    humanPont = pontuaHumano;
-    if (humanPont > roboPont){
-        return console.log("Parabens! voce ganhou da maquina.");
+    if (pontuaHumano > pontuaRobo){
+        console.log("Parabens! voce ganhou da maquina.");
+    }else if(pontuaHumano < pontuaRobo){
+        console.log("Que triste! Voce perdeu para maquina");
     }else{
-        return console.log("Que triste! Voce perdeu para maquina");
+        console.log("Empate!");
     }
 }
 
+playGame();

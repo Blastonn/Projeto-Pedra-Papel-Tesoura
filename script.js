@@ -13,6 +13,7 @@ para.classList.add("text-computer");
 pontuacao.classList.add("pontuacao");
 resultado.classList.add("resultado-final");
 
+
 function getHumanChoice(escolha){
     return escolha;
 }
@@ -60,10 +61,12 @@ function playRound(humanChoice, computerChoice){
 
 function vencedorJogo(){
     if (pontuaHumano == pontuacaoMaxima ){
-        console.log("Parabens! voce ganhou da maquina.");    
+        resultado.textContent = "Parabens! voce ganhou da maquina.";  
+        resultado.style.color = "green";  
         desativarJogo();    
     }else if (pontuaRobo == pontuacaoMaxima){
-        console.log("Voce perdeu");
+        resultado.textContent = "Voce perdeu";
+        resultado.style.color = "red";
         desativarJogo();
     }
 }
@@ -88,7 +91,8 @@ function playGameBt(){
 
         container.appendChild(pontuacao);
         container.appendChild(para);
-        container.appendChild(content);     
+        container.appendChild(content);  
+        container.appendChild(resultado);   
         return vencedorJogo(); 
     });
 });

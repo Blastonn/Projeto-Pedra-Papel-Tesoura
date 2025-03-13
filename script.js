@@ -56,7 +56,7 @@ function playGame(){
            return vencedorJogo();
         }
 
-function vencedorJogo(roboPont, humanPont){
+function vencedorJogo(){
     if (pontuaHumano > pontuaRobo){
         console.log("Parabens! voce ganhou da maquina.");
     }else if(pontuaHumano < pontuaRobo){

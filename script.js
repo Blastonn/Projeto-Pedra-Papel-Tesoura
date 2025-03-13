@@ -15,7 +15,7 @@ resultado.classList.add("resultado-final");
 
 
 function getHumanChoice(escolha){
-    //a
+    //ag
     return escolha;
 }
 

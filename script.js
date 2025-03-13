@@ -15,6 +15,7 @@ resultado.classList.add("resultado-final");
 
 
 function getHumanChoice(escolha){
+    //a
     return escolha;
 }
 
